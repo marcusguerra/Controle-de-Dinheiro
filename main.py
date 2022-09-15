@@ -53,7 +53,7 @@ def menu():
             arq.close()
         elif(resp == 3):
             mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario)
-        else:
+        elif(resp != 0):
             mostraGasto(gasto_Atual)
 
 menu()
