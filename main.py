@@ -35,6 +35,8 @@ def mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario):
 def menu():
     dia = time.localtime().tm_mday
     Tetogasto_diario = 21
+
+
     arq = open("gastoMensal.txt", "r")
     gasto_Atual = arq.readline()
     gasto_Atual = float(gasto_Atual)
