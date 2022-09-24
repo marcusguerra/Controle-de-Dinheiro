@@ -5,13 +5,22 @@ def reseta(dia):
     arq = open("gastoMensal.txt", "w")
     arq.write("000.00")
 
-def insereGasto(gasto_Atual, arq):
+def insereGasto(gasto_Atual, arq, dia,mes):
     gasto = float(input("Valor do Gasto = "))
     gasto = gasto_Atual + gasto
     gasto = str(gasto)
+    escreveGastos(gasto, dia, mes)
     arq.write(gasto)
     gasto = float(gasto)
+
     return gasto
+
+def escreveGastos(gasto, dia,mes):
+    dia = str(dia)
+    mes = str(mes)
+    arqGastos = open("logGastos.txt", "a")
+    saida =  dia + "/" + mes + " - " + gasto + "\n"
+    arqGastos.write(saida)
 
 def mostraGasto(gasto):
     print(gasto)
@@ -34,6 +43,7 @@ def mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario):
 
 def menu():
     dia = time.localtime().tm_mday
+    mes = time.localtime().tm_mon
     Tetogasto_diario = 21
 
 
@@ -51,7 +61,7 @@ def menu():
         elif(resp == 2):
             arq.close()
             arq = open("gastoMensal.txt", "w")
-            gasto_Atual = insereGasto(gasto_Atual, arq)
+            gasto_Atual = insereGasto(gasto_Atual, arq, dia, mes)
             arq.close()
         elif(resp == 3):
             mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario)
