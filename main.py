@@ -16,10 +16,11 @@ def insereGasto(gasto_Atual, arq, dia,mes):
     return gasto
 
 def escreveGastos(gasto, dia,mes):
+    detalhe = str(input("Detalhamento: "))
     dia = str(dia)
     mes = str(mes)
     arqGastos = open("logGastos.txt", "a")
-    saida =  dia + "/" + mes + " - " + gasto + "\n"
+    saida =  dia + "/" + mes + " - " + gasto+ "- " + detalhe  + "\n"
     arqGastos.write(saida)
 
 def mostraGasto(gasto):
