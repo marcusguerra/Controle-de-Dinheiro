@@ -6,10 +6,11 @@ def reseta(dia):
     arq.write("000.00")
 
 def insereGasto(gasto_Atual, arq, dia,mes):
-    gasto = float(input("Valor do Gasto = "))
+    gasto = str(input("Valor do Gasto = "))
+    escreveGastos(gasto , dia, mes)
+    gasto = float(gasto)
     gasto = gasto_Atual + gasto
     gasto = str(gasto)
-    escreveGastos(gasto, dia, mes)
     arq.write(gasto)
     gasto = float(gasto)
 
