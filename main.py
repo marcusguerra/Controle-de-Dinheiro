@@ -31,13 +31,13 @@ def mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario):
     valorRestante = ((30)*Tetogasto_diario) - gasto_Atual
     if(dia < 5):
         if(dia == 4):
-            dia = 26
+            dia = 34
         elif(dia == 3):
-            dia = 25
+            dia = 33
         elif(dia == 2):
-            dia = 24
+            dia = 32
         else:
-            dia = 23
+            dia = 31
 
     print("Valor a Ser gasto Total = ", valorRestante)
     print("Valor a Ser gasto por Dia = ", valorRestante/(30 - dia+4))
