@@ -7,13 +7,17 @@ def reseta(dia):
 
 def insereGasto(gasto_Atual, arq, dia,mes):
     gasto = str(input("Valor do Gasto = "))
-    escreveGastos(gasto , dia, mes)
-    gasto = float(gasto)
-    gasto = gasto_Atual + gasto
-    gasto = str(gasto)
-    arq.write(gasto)
-    gasto = float(gasto)
-
+    try:
+        gasto = float(gasto)
+        gasto = gasto_Atual + gasto
+        gasto = str(gasto)
+        escreveGastos(gasto, dia, mes)
+        arq.write(gasto)
+        gasto = float(gasto)
+    except:
+        gasto_Atual = str(gasto_Atual)
+        arq.write(gasto_Atual)
+        return 0
     return gasto
 
 def escreveGastos(gasto, dia,mes):
