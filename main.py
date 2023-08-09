@@ -2,18 +2,16 @@ import time
 
 
 def reseta(dia):
-    arq = open("gastoMensal.txt", "w")
+    arq = open("C:\python projects\Controle-de-Dinheiro\gastoMensal.txt", "w")
     arq.write("000.00")
 
 def insereGasto(gasto_Atual, arq, dia,mes):
     gasto = str(input("Valor do Gasto = "))
     try:
-        gasto = float(gasto)
-        gasto = gasto_Atual + gasto
-        gasto = str(gasto)
+        gastoT = str(gasto_Atual + float(gasto))
         escreveGastos(gasto, dia, mes)
-        arq.write(gasto)
-        gasto = float(gasto)
+        arq.write(gastoT)
+        gasto = float(gastoT)
     except:
         gasto_Atual = str(gasto_Atual)
         arq.write(gasto_Atual)
@@ -24,7 +22,7 @@ def escreveGastos(gasto, dia,mes):
     detalhe = str(input("Detalhamento: "))
     dia = str(dia)
     mes = str(mes)
-    arqGastos = open("logGastos.txt", "a")
+    arqGastos = open("C:\python projects\Controle-de-Dinheiro\logGastos.txt", "a")
     saida =  dia + "/" + mes + " - " + gasto+ "- " + detalhe  + "\n"
     arqGastos.write(saida)
 
@@ -48,15 +46,15 @@ def mostraMontanteRestante(gasto_Atual, dia, Tetogasto_diario):
 
     print("Valor a Ser gasto Total = ", valorRestante)
     print("Valor a Ser gasto por Dia = ", valorRestante/(30 - dia+4))
-    print("Você tem ", ((dia-4)*21) - gasto_Atual  ,"de saldo extra")
+    print("Você tem ", ((dia-4)*Tetogasto_diario) - gasto_Atual  ,"de saldo extra")
 
 def menu():
     dia = time.localtime().tm_mday
     mes = time.localtime().tm_mon
-    Tetogasto_diario = 21
+    Tetogasto_diario = 36
 
 
-    arq = open("gastoMensal.txt", "r")
+    arq = open("C:\python projects\Controle-de-Dinheiro\gastoMensal.txt", "r")
     gasto_Atual = arq.readline()
     gasto_Atual = float(gasto_Atual)
     resp = 1
@@ -69,7 +67,7 @@ def menu():
             reseta(dia)
         elif(resp == 2):
             arq.close()
-            arq = open("gastoMensal.txt", "w")
+            arq = open("C:\python projects\Controle-de-Dinheiro\gastoMensal.txt", "w")
             gasto_Atual = insereGasto(gasto_Atual, arq, dia, mes)
             arq.close()
         elif(resp == 3):
